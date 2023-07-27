@@ -31,11 +31,15 @@ Instead of request response mechanism in REST api , use socket io to perform com
 ### I will be using ES6 imports instead of CJS imports
 import <desiredName> from 'moduleName';
 Reasons:
-1.Asynchronous loading of modules on demand. (CJS imports are synchronous hence we need to wait till the modules are loaded in order to execure the current script).
+1.Asynchronous loading of modules on demand. (CJS imports are synchronous hence we need to wait till the modules are loaded in order to execure the current script). (Performance improvement)
 2. Namespace imports => Import multiple exports into a single NameSpace and can use them.
 import * as utils from './utils.js';
 3.Named Exports and Imports => helps to maintain a cleaner code 
 4. Supports cicular dependencies => without runtime errors
+
+### I will enable "type": "modules" in package.json , so that all the js files will be treated as modules.
+So now we can easily import using ES6 import . 
+Else to ES6 synstax to work we need to rename files to .mjs or add flag to --experimental-modules.
 
 #### Built in http module
 to make sure we create a server based on http protocols
