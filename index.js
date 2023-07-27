@@ -10,6 +10,7 @@ app.use(cors()); // add the cors middle ware the created express app
 
 const server = http.createServer(app); // we need to create a http server passing the express app that we built which is cors enabled
 
+const data = [1,2,3,4,5]; // we need to serialise these data , but Express will automatically serialise this before sending.
 // get REST end point
 app.get('/',(req,res)=>{
     res.status(200).send({"message": 'Hello from chatify backend'}); // let's send a JSON object as response to the request to the / end point

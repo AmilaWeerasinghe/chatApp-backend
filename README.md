@@ -60,3 +60,5 @@ Later after tranmissiton we can deserialise the strings back to Javascript objec
 JSON.parse('deserialTrasmittedString'); and use the JS object inside nodeJs server, react.
 
 The transmitted JSON string will be recieved to the reciever as a single string.
+
+### Also Express will automatically serialise the data(object/ array) to strings before tranmission. But we get a JSON String, and need to make sure that at the recievers end to PARSE them back to JS objects to handle them in the JS code.
