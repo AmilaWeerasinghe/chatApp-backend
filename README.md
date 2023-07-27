@@ -91,6 +91,14 @@ Catch specific eventName sentby client or server.
 In server side socket.on is usually nested inside the io.on
 In client side socket.on can be placed anywhere to listen to the event emmitted by the server.
 
+### Socket send message to all
+socket.to(room).emit() method in Socket.IO is used on the server-side to send a message or an event to all clients in a specific room, except the sender
+We can send out a custom event other than the predefined events in socket io like (connect , disconnet , error).
+Once this message is sent add an event listner in the react frontend application to capture this event and show in screen.
+
+Use socket.emit, to emitt a message to the , emmitter who sent the front end message.
+
+Save the chat room users socket ids in an array and send that data to client using event emmit , so we can track the list of users per room when new user joins a room.
 
 ### side note
 you may find backtick character (`) which is used to create template literals. That is more flexible than normal strings

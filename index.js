@@ -17,6 +17,9 @@ const io = new Server(server,{
         methods: ['GET','POST']
     }
 })
+const CHAT_BOT = 'ChatBot'; // to identify the server
+let chatRoom = ''; // store chat room name
+let allChatRoomUsers = []; // store all chat rooms, users ids
 
 io.on('connection',(socket)=>{
     console.log(`User connected: ${socket.id}`);
@@ -24,10 +27,39 @@ io.on('connection',(socket)=>{
     socket.on('join_room',(data)=>{
         //extract data sent from client with the join room event
         const {userName, userRoom} = data;
+
+
         //validations
         if(userName !== '' && userRoom !== ''){
             console.log(`${userName} is joining the ${userRoom}`);
             socket.join(userRoom); 
+
+            //let's send a message to all
+            let createdTime = Date.now();
+
+            // messge to all in the room except the event emitter from client
+            socket.to(userRoom).emit('recieve_message', {
+                message: `${userName} entered the chat`,
+                username: CHAT_BOT,
+                createdTime
+            });
+
+            // event with message to the emitter client
+            socket.emit('recieve_message',{
+                message: `Welcome ${userName}`,
+                username: CHAT_BOT,
+                createdTime
+            });
+
+            chatRoom = userRoom;
+            allChatRoomUsers.push({id:socket.id ,userName ,userRoom});
+             //once a new user is added we need to update the current all users and send back the all users to the client
+             //from above array filter only the users for this new event chat room 
+             let chatRoomUsers = allChatRoomUsers.filter((user)=> {user.userRoom === userRoom});
+
+             //let's send this chat room users details to all the current chat room to new sender and the rest of the room as well
+             socket.to(userRoom).emit('chat_room_users',chatRoomUsers);
+             socket.emit('chat_room_users',chatRoomUsers);
         }
     })
 })
