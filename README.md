@@ -26,3 +26,17 @@ A framework for JS to write code more easily and convinietly
 
 ### Socket.io
 Instead of request response mechanism in REST api , use socket io to perform communication in real time.
+
+
+### I will be using ES6 imports instead of CJS imports
+import <desiredName> from 'moduleName';
+Reasons:
+1.Asynchronous loading of modules on demand. (CJS imports are synchronous hence we need to wait till the modules are loaded in order to execure the current script).
+2. Namespace imports => Import multiple exports into a single NameSpace and can use them.
+import * as utils from './utils.js';
+3.Named Exports and Imports => helps to maintain a cleaner code 
+4. Supports cicular dependencies => without runtime errors
+
+#### Built in http module
+to make sure we create a server based on http protocols
+And we use express to make routing , and access to req/res objects , middleware support and error handling to done easily.
