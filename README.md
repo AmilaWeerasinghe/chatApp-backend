@@ -44,3 +44,19 @@ Else to ES6 synstax to work we need to rename files to .mjs or add flag to --exp
 #### Built in http module
 to make sure we create a server based on http protocols
 And we use express to make routing , and access to req/res objects , middleware support and error handling to done easily.
+
+
+### Data transmission
+Since i will be implementing a web app, i will need to transmit data over networks.
+Usuall we can't just transmit complex data structures like arrays/ Lists through networks .Instead we can transmit string representations.
+For that common pactrice is to use JSON/XML
+
+### Why JSON?
+simplicity, ease of use, and widespread support in various programming languages.
+
+We can use JSON.stringify('ComplexDataStructure') and serialize the data structure to a simple JSON string which can be transmitted throught the networks adhering to there protocols
+
+Later after tranmissiton we can deserialise the strings back to Javascript objects using
+JSON.parse('deserialTrasmittedString'); and use the JS object inside nodeJs server, react.
+
+The transmitted JSON string will be recieved to the reciever as a single string.
