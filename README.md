@@ -5,7 +5,10 @@ Scalable server => Nodejs
 To store messages , in memory is not sufficient => Database => Instead of localDB i will use HarperDB as free host and NoSQL schema because of rapid change of db changes will occur with the time progresses.
 
 ### How to start server?
-IN local run node server,js // later to be changed => nodemon for developer server restart upon changes npm i -D nodemon
+commands
+Developer server=> npm run start:dev
+Server => npm run start
+In local run node server.js // later to be changed => nodemon for developer server restart upon changes npm i -D nodemon
 
 ### We need to comminicate with clients
 So to make simplify calls, promised based and convinient approach we use axios
