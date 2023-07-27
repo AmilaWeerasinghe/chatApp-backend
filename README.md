@@ -62,3 +62,20 @@ JSON.parse('deserialTrasmittedString'); and use the JS object inside nodeJs serv
 The transmitted JSON string will be recieved to the reciever as a single string.
 
 ### Also Express will automatically serialise the data(object/ array) to strings before tranmission. But we get a JSON String, and need to make sure that at the recievers end to PARSE them back to JS objects to handle them in the JS code.
+
+### Sockets
+
+We listen to the socket emitted by client and , we can use a socket group to keep users of same group together.
+
+We need a seperate intance of socket server class for that purpose.
+inputs would be above created http server, to attach the new instance of socket server to the HTTP server
+And add options to CORS policy to accept requests from other domain Ex: localhost:3000
+
+implement a listener to listen when any client connects through the io socket and can perform necessary operations
+ io.on(eventName, callback);
+ eventName make to "connection" , which then listens for new socket connnection
+
+
+### side note
+you may find backtick character (`) which is used to create template literals. That is more flexible than normal strings
+
