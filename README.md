@@ -74,8 +74,26 @@ And add options to CORS policy to accept requests from other domain Ex: localhos
 implement a listener to listen when any client connects through the io socket and can perform necessary operations
  io.on(eventName, callback);
  eventName make to "connection" , which then listens for new socket connnection
+ Use import {Server} since we have named exports in the module.(not default export)
+ Namespaces can be used import * as util from 'utils';
+
+ ### socket room
+ We need many clients to get and send messages in a room like structure , that is publish message to many
+ In socket.io there is a concept called 'rooms'
+Definition => A room is an arbitrary channel that sockets can join and leave. It can be used to broadcast events to a subset of clients."
+We can join/leave room in server callback function to listening to a connection by specifiying which room to join/leave
+
+Messges in a certain room are not shared to the other rooms hence we have unique channel and subscribers .
+
+We can listen for event emitted by client as well as emit events from srver and listen it in server.
+socket.on(eventName, callback);
+Catch specific eventName sentby client or server.
+In server side socket.on is usually nested inside the io.on
+In client side socket.on can be placed anywhere to listen to the event emmitted by the server.
 
 
 ### side note
 you may find backtick character (`) which is used to create template literals. That is more flexible than normal strings
+
+
 
